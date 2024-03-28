@@ -1,10 +1,10 @@
-\documentclass{article}
+\documentclass[12pt, twoside]{article}
 
 \usepackage{arxiv}
 
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-\usepackage{hyperref}       % hyperlinks
+\usepackage[hidelinks]{hyperref}       % hyperlinks, hide links
 \usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{amsfonts}       % blackboard math symbols
@@ -13,8 +13,30 @@
 \usepackage{cleveref}       % smart cross-referencing
 \usepackage{lipsum}         % Can be removed after putting your text content
 \usepackage{graphicx}
-\usepackage{natbib}
+% Note: If you are starting from scratch it's recommended to use biblatex because that package provides localization in several languages, it's actively developed and makes bibliography management easier and more flexible. However, note that most journals still use bibtex and natbib.
+% https://www.overleaf.com/learn/latex/Bibliography_management_with_natbib
+% \usepackage[style=nature]{natbib}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!60!black},
+    urlcolor={blue!80!black}
+}
+\usepackage[
+backend=biber,
+style=nature,
+sorting=none
+]{biblatex}
+\addbibresource{references.bib} 
+\usepackage[english]{babel}
+\usepackage[autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+\usepackage[font={footnotesize},labelfont={bf},singlelinecheck=false,labelsep=period]{caption}
 \usepackage{doi}
+% \usepackage{lineno}
+% \linenumbers  % add line number
 
 \title{A template for the \emph{arxiv} style}
 
@@ -135,7 +157,7 @@ Citations use \verb+natbib+. The documentation may be found at
 	\url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}
 \end{center}
 
-Here is an example usage of the two main commands (\verb+citet+ and \verb+citep+): Some people thought a thing \citep{kour2014real, keshet2016prediction} but other people thought something else \citep{kour2014fast}. Many people have speculated that if we knew exactly why \citet{kour2014fast} thought this\dots
+"Here" is an example usage of the two main commands (\verb+autocite+ and \verb+parencite+): Some people thought a thing \parencite{kour2014real, keshet2016prediction} but other people thought something else \parencite{kour2014fast}. Many people have speculated that if we knew exactly why \autocite{kour2014fast} thought this\dots
 
 \subsection{Figures}
 \lipsum[10]
@@ -183,8 +205,8 @@ The documentation for \verb+booktabs+ (`Publication quality tables in LaTeX') is
 \end{itemize}
 
 
-\bibliographystyle{unsrtnat}
-\bibliography{references}  %%% Uncomment this line and comment out the ``thebibliography'' section below to use the external .bib file (using bibtex) .
+% \bibliographystyle{unsrtnat}
+% \bibliography{references}  %%% Uncomment this line and comment out the ``thebibliography'' section below to use the external .bib file (using bibtex) .
 
 
 %%% Uncomment this section and comment out the \bibliography{references} line above to use inline references.
@@ -210,5 +232,7 @@ The documentation for \verb+booktabs+ (`Publication quality tables in LaTeX') is
 
 % \end{thebibliography}
 
+% \newpage
+\printbibliography[heading=bibintoc, title={References}]
 
 \end{document}
