@@ -26,17 +26,18 @@
 
 
 
-\newcommand{\headeright}{A Preprint}
-\newcommand{\undertitle}{A Preprint}
-\newcommand{\shorttitle}{\@title}
+% \newcommand{\headeright}{A Preprint}
+% \newcommand{\undertitle}{A Preprint}
+% \newcommand{\shorttitle}{\@title}
 
 \usepackage{fancyhdr}
 \fancyhf{}
 \pagestyle{fancy}
-\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0pt}
 \fancyheadoffset{0pt}
-\rhead{\scshape \footnotesize \headeright}
-\chead{\shorttitle}
+% \rhead{\scshape \footnotesize \headeright}
+\rhead{\scshape \footnotesize}
+% \chead{\shorttitle}
 \cfoot{\thepage}
 
 
@@ -221,9 +222,10 @@
     \vskip 0.1in
     \@toptitlebar
     \centering
-    {\LARGE\sc \@title\par}
+    {\LARGE \@title\par}
+%     {\LARGE\sc \@title\par}
     \@bottomtitlebar
-    \textsc{\undertitle}\\
+%     \textsc{\undertitle}\\
     \vskip 0.1in
     \def\And{%
       \end{tabular}\hfil\linebreak[0]\hfil%
